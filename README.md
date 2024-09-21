@@ -7,6 +7,7 @@ nextjs-chatgpt-app
 2. Routing with App Router (Parallel routes + Streaming)
 3. Chat Interface
 4. Shadcn
+  a. Want to add components use this command `npx shadcn@latest add input`
 5. Deployed to Vercel and the app is containerized using Docker
 6. Using Devbox for development (checkout devbox.json)
 

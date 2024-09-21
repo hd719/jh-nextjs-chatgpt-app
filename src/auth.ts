@@ -2,12 +2,13 @@ import NextAuth from "next-auth";
 import { NextAuthConfig } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 
-const authOptions: NextAuthConfig = {
+export const authOptions: NextAuthConfig = {
   callbacks: {
     async signIn({ profile }) {
       // Change this to your username
       return profile?.login === "hd719";
     },
+
   },
   providers: [
     GitHubProvider({
