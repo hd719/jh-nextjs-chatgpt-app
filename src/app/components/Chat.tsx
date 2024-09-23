@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,14 +14,16 @@ interface Message {
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState("");
+  const chatId = useRef<number | null>(null); // The reason we use a ref here is because we want to persist the chatId across renders
   const onClick = async () => {
-    const completions = await getCompletion([
+    const completions = await getCompletion(chatId.current, [
       ...messages,
       {
         role: "user",
         content: message,
       },
     ]);
+    chatId.current = completions.id;
     setMessage("");
     setMessages(completions.messages);
   };

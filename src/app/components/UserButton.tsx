@@ -23,6 +23,7 @@ export default function UserButton({
   onSignOut: () => Promise<void>;
 }) {
   const { data: session, status } = useSession();
+  const avatarImage = session?.user?.image ?? undefined;
 
   return (
     <div>
@@ -30,7 +31,7 @@ export default function UserButton({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar>
-              <AvatarImage src={session?.user?.image ?? undefined} />
+              <AvatarImage src={avatarImage} />
               <AvatarFallback>
                 {getFirstTwoCapitalLetters(session?.user?.name)}
               </AvatarFallback>
